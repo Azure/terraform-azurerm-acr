@@ -1,4 +1,3 @@
-output "permutation_string_list" {
-  description = ""
-  value       = ["${random_shuffle.rs.result}"]
+output "registry_id" {
+  value = azurerm_container_registry.registry.id
 }

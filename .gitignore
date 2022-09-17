@@ -1,6 +1,10 @@
 # .tfvars files
 *.tfvars
 
+# Test Module directory
+**/.terraform/*
+**/.terraform.lock.hcl
+
 # Exclude for testing stuff.
 !testing.tfvars
 
