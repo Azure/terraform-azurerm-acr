@@ -113,3 +113,15 @@ variable "replicas" {
   }))
   default = null
 }
+
+variable "identity_type" {
+  description = "(Optional) Identity type of the container registry. Possible values are 'SystemAssigned', 'UserAssigned' or 'Both' (Literal)."
+  type        = string
+  default     = null
+}
+
+variable "identity_list" {
+  description = "(Opcional) Object with values of retention policy, contains boolean value that indicates whether the policy is enabled and number of days to retain. Use the format 'identifier of region' = { enable_zone_redundancy = true/false, enable_regional_endpoint = true/false}"
+  type        = list(string)
+  default     = null
+}

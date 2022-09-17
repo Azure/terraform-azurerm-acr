@@ -10,7 +10,7 @@ data "azurerm_resource_group" "resource_group" {
   name  = var.resource_group_name
 }
 
-resource "azurerm_container_registry" "acr" {
+resource "azurerm_container_registry" "registry" {
   name                          = var.registry_name
   resource_group_name           = azurerm_resource_group.resource_group[0].name
   location                      = azurerm_resource_group.resource_group[0].location
@@ -50,4 +50,11 @@ resource "azurerm_container_registry" "acr" {
     }
   }
 
+  dynamic "identity" {
+    for_each = toset(local._identity_type == null ? [] : [""])
+    content {
+      type         = local._identity_type
+      identity_ids = var.identity_list
+    }
+  }
 }
